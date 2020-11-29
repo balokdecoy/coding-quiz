@@ -18,8 +18,8 @@
     <!-- Jumbotron header -->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">Coding Quiz</h1>
-          <p class="lead">Test your coding knowledge with this multiple choice quiz. You're on the clock!</p>
+          <h1 class="display-4" id="jumboHead"></h1>
+          <p class="lead" id="myJumbo"></p>
         </div>
     </div>
 
@@ -27,15 +27,29 @@
         <!-- Start button -->
         <div class="row">
             <div class="col-md-12">
-                <button type="button" class="btn btn-primary btn-lg" style="display: flex; align-items: center;">Start Quiz</button>
+                <button type="button" class="btn btn-primary btn-lg" 
+                    style="display: flex; align-items: center;" id="startBtn" onclick="startQuiz()">
+                </button>
             </div>
         </div>
    
-        <!-- Div class where quiz questions will render from javascript -->
+        <div class="row">
+            <!-- Div class where quiz questions will render  -->
+            <div class="col-md-8">
+                <div class="main">
+                   
+                </div>
+            </div>
+            <!-- Div class where timer will display -->
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
-                <div class="main">
-                    
+                <div class="progress" id="progBar">
+                    <div class="progress-bar" role="progressbar" style="width: 5%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                 </div>
             </div>
         </div>
