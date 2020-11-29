@@ -13,6 +13,7 @@ jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. 
 startBtn.textContent = "Let's do this!";
 progBar.style.visibility = "hidden";
 
+// Begin Quiz when Start button is clicked
 function startQuiz() {
     startBtn.style.visibility = "hidden";
     progBar.style.visibility = "visible";
