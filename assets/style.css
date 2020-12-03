@@ -20,3 +20,7 @@ body {
 #main {
     font-size: large;
 }
+
+.myBtn {
+    margin: 2px;
+}
