@@ -16,9 +16,15 @@ startBtn.textContent = "Start";
 progBar.style.visibility = "hidden";
 var userAnswers = [];
 var userScore = "";
-var timeRem = 120;
+var timeRem = 60;
 
-// Question Array 
+// Linebreak function
+function linebreak() {
+    var lnBreak = document.createElement("br");
+    main.append(lnBreak);
+}
+
+// Question array with specific question objects
 var questions = [
     {
         question1: "Question 1: Who invented Linux?",
@@ -42,21 +48,21 @@ var questions = [
     },
 ]
 
+// Function that starts quiz logic when user clicks Submit
 function startQuiz() {
     startBtn.style.visibility = "hidden";
     progBar.style.visibility = "visible";
-    var linebreak = document.createElement("br");
 
     //Question 1
     main.textContent = questions[0].question1;
-    main.append(linebreak);
+    linebreak();
     for (var i = 0; i < questions[0].choices1.length; i++) {
         var buttons = document.createElement("button");
         buttons.className = "btn btn-info myBtn";
-        var linebreak = document.createElement("br");
         buttons.textContent += questions[0].choices1[i];
         main.append(buttons);
-        main.append(linebreak);
+        linebreak();
+        console.log(buttons.textContent);
     }
 
     // Timer function
