@@ -15,6 +15,7 @@ jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. 
 startBtn.textContent = "Start";
 progBar.style.visibility = "hidden";
 var userAnswers = [];
+var multipleChoice = [];
 var userScore = "";
 var timeRem = 60;
 
@@ -57,13 +58,22 @@ function startQuiz() {
     main.textContent = questions[0].question1;
     linebreak();
     for (var i = 0; i < questions[0].choices1.length; i++) {
-        var buttons = document.createElement("button");
+        var buttons = document.createElement("button"[i]);
         buttons.className = "btn btn-info myBtn";
         buttons.textContent += questions[0].choices1[i];
         main.append(buttons);
         linebreak();
-        console.log(buttons.textContent);
+        multipleChoice.push(questions[0].choices1[i]);
     }
+    console.log(multipleChoice);
+
+    buttons.addEventListener("click", function(event) {
+        userAnswers.push(buttons);
+        console.log(userAnswers);
+        console.log(questions[0].correct1);
+        console.log("Correctamundo");
+    })
+    
 
     // Timer function
     function setTime() {
