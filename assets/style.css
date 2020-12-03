@@ -2,8 +2,19 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+#jumboMain {
+    background-color: black;
+}
+
 #jumboHead {
     font-weight: bold;
+    background-color: black;
+    color: lime;
+}
+
+#myJumbo {
+    background-color: black;
+    color:lime;
 }
 
 #main {
