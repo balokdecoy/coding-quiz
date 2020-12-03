@@ -9,35 +9,59 @@ var progBar =  document.getElementById("progBar");
 var main = document.getElementById("main");
 var timer = document.getElementById("timer");
 
+// Create elements
+var buttons = document.createElement("button");
+var question = questions
+
 // Set default content
-h1El.textContent = "Coding Quiz";
-jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. You're on the clock!";
+h1El.textContent = "> Coding Quiz";
+jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 2 seconds off your time.";
 startBtn.textContent = "Start";
 progBar.style.visibility = "hidden";
 var userAnswers = [];
-var userScore = [];
-var timeRem = 60;
+var userScore = "";
+var timeRem = 120;
 
-// Questions Object
-var quizQuestions = [
-    Quest1 = {
-        question: "Question 1: 2 + 2 =",
-        answer1: "a: 1",
-        answer2: "b: 2",
-        answer3: "c: 3",
-        answer4: "d: 4",
-    }
+// Question Array 
+
+var questions = [
+    {
+        question1: "Who invented Linux?",
+        choices1: [
+            "Linus Torvalds",
+            "Bruce Springsteen",
+            "Bill Gates",
+            "Steve Jobs",
+        ],
+        correct1: "Linus Torvalds",
+    },
+    {
+        question2: "Who wrote Moby Dick?",
+        choices2: [
+            "JK Rowling",
+            "Barrack Obama",
+            "David Lynch",
+            "Herman Melville",
+        ],
+        correct2: "Herman Melville",
+    },
 ]
 
-// Begin Quiz when Start button is clicked
 function startQuiz() {
     startBtn.style.visibility = "hidden";
     progBar.style.visibility = "visible";
-    main.textContent = Quest1.question;
+    console.log(questions[1].choices2[2]);
+    main.append(questions[0].question1);
+    for (var i = 0; i < questions[0].choices1.length; i++) {
+        var buttons = document.createElement("button");
+        buttons.textContent = questions[0].choices1[i];
+        main.append(buttons);
+    }
+
     function setTime() {
         var timerInterval = setInterval(function() {
             timeRem--;
-            timer.textContent = timeRem;
+            timer.textContent = "Time remaining: " + timeRem;
 
             if(timeRem === 0) {
                 clearInterval(timerInterval);
@@ -47,3 +71,30 @@ function startQuiz() {
     }
     setTime();
 }
+
+// Questions
+/*var question1 = ["The answer is 1", "The answer is 2", "The answer is 3", "The answer is 4",];
+
+// Begin Quiz when Start button is clicked
+function startQuiz() {
+    startBtn.style.visibility = "hidden";
+    progBar.style.visibility = "visible";
+    main.style.visibility = "visible";
+    question1.forEach(function(items) {
+        var buttons = document.createElement("button");
+        buttons.textContent = items;
+        main.appendChild(buttons);
+    })
+    function setTime() {
+        var timerInterval = setInterval(function() {
+            timeRem--;
+            timer.textContent = "Time remaining: " + timeRem;
+
+            if(timeRem === 0) {
+                clearInterval(timerInterval);
+                endQuiz();
+            }
+        }, 1000);
+    }
+    setTime();
+}*/
