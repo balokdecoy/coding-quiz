@@ -8,6 +8,7 @@ var startBtn = document.getElementById("startBtn");
 var progBar =  document.getElementById("progBar");
 var main = document.getElementById("main");
 var timer = document.getElementById("timer");
+var linebreak = document.createElement("br");
 
 // Set default content
 h1El.textContent = "> Coding Quiz";
@@ -47,6 +48,8 @@ function startQuiz() {
     startBtn.style.visibility = "hidden";
     progBar.style.visibility = "visible";
     console.log(questions[1].choices2[2]);
+
+    //Question 1
     main.append(questions[0].question1);
     for (var i = 0; i < questions[0].choices1.length; i++) {
         var buttons = document.createElement("button");
@@ -55,6 +58,7 @@ function startQuiz() {
         main.append(buttons);
     }
 
+    // Timer function
     function setTime() {
         var timerInterval = setInterval(function() {
             timeRem--;
@@ -68,30 +72,3 @@ function startQuiz() {
     }
     setTime();
 }
-
-// Questions
-/*var question1 = ["The answer is 1", "The answer is 2", "The answer is 3", "The answer is 4",];
-
-// Begin Quiz when Start button is clicked
-function startQuiz() {
-    startBtn.style.visibility = "hidden";
-    progBar.style.visibility = "visible";
-    main.style.visibility = "visible";
-    question1.forEach(function(items) {
-        var buttons = document.createElement("button");
-        buttons.textContent = items;
-        main.appendChild(buttons);
-    })
-    function setTime() {
-        var timerInterval = setInterval(function() {
-            timeRem--;
-            timer.textContent = "Time remaining: " + timeRem;
-
-            if(timeRem === 0) {
-                clearInterval(timerInterval);
-                endQuiz();
-            }
-        }, 1000);
-    }
-    setTime();
-}*/
