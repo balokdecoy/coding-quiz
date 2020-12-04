@@ -14,6 +14,7 @@ h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 2 seconds off your time.";
 startBtn.textContent = "Start";
 progBar.style.visibility = "hidden";
+main.style.visibility = "hidden";
 var userAnswers = [];
 var multipleChoice = [];
 var userScore = "";
@@ -53,23 +54,55 @@ var questions = [
 function startQuiz() {
     startBtn.style.visibility = "hidden";
     progBar.style.visibility = "visible";
+    main.style.visibility = "visible";
+    main.innerHTML = questions[0].question1;
+
+    for (var i = 0; i < questions[0].choices1.length; i++) {
+
+        // Create list items buttons will render to
+        var li = document.createElement("li");
+        li.setAttribute("data-index", i);
+
+        // Create buttons with text content from questions index
+        var button = document.createElement("button");
+        button.textContent = questions[0].choices1[i];
+        button.className = "btn btn-info myBtn";
+
+        // Send button list to HTML
+        li.appendChild(button);
+        main.appendChild(li);
+        multipleChoice.push(button);
+
+        console.log(multipleChoice[i]);
+    }
+
+    main.addEventListener("click", function(event) {
+        var element = event.target;
+
+        if (element.matches("button") === true) {
+            if (button.textContent == questions[0].choices1[0]) {
+                alert("Correct");
+            }
+            else {
+                alert("incorrect");
+            }
+        }
+    })
+}
 
     //Question 1
+    /*
     main.textContent = questions[0].question1;
     linebreak();
     for (var i = 0; i < questions[0].choices1.length; i++) {
-        var buttons = document.createElement("button"[i]);
+        var buttons = document.createElement("button");
         buttons.className = "btn btn-info myBtn";
         buttons.textContent += questions[0].choices1[i];
-        main.append(buttons);
+        main.appendChild(buttons);
         linebreak();
-        multipleChoice.push(questions[0].choices1[i]);
     }
-    console.log(multipleChoice);
 
-    buttons.addEventListener("click", function(event) {
-        userAnswers.push(buttons);
-        console.log(userAnswers);
+    buttons.addEventListener("click", function() {
         console.log(questions[0].correct1);
         console.log("Correctamundo");
     })
@@ -83,9 +116,9 @@ function startQuiz() {
 
             if(timeRem === 0) {
                 clearInterval(timerInterval);
-                endQuiz();
+                //endQuiz();
             }
         }, 1000);
     }
     setTime();
-}
+*/
