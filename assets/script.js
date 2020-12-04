@@ -18,12 +18,6 @@ var multipleChoice = [];
 var userScore = "";
 var timeRem = 60;
 
-// Linebreak function
-function linebreak() {
-    var lnBreak = document.createElement("br");
-    main.append(lnBreak);
-}
-
 // Question array with specific question objects
 var questions = [
     {
@@ -47,6 +41,8 @@ var questions = [
         correct2: "Herman Melville",
     },
 ]
+
+var correctAnswers = [questions[0].correct1, questions[1].correct2];
 
 // Function that starts quiz logic when user clicks Submit
 function startQuiz() {
