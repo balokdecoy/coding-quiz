@@ -22,7 +22,7 @@ var timeRem = 60;
 // Question array with specific question objects
 var questions = [
     {
-        question: "Question 1: Who invented Linux?",
+        question: "Question 1: Who invented the Linux kernel?",
         choices: [
             "Linus Torvalds",
             "Bruce Springsteen",
@@ -91,7 +91,6 @@ function startQuiz() {
     main.innerHTML = questions[0].question1;
     getQuestion();
     setTime();
-    
 }
 
 // Timer function
