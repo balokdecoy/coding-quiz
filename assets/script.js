@@ -13,8 +13,6 @@ h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 2 seconds off your time.";
 startBtn.textContent = "Start";
 main.style.visibility = "hidden";
-var userAnswers = [];
-var multipleChoice = [];
 var userScore = "";
 var timeRem = 60;
 
@@ -43,6 +41,7 @@ var questions = [
 ]
 
 var correctAnswers = [questions[0].correct1, questions[1].correct2];
+console.log(questions[0]);
 
 // Function that starts quiz logic when user clicks Submit
 function startQuiz() {
@@ -50,7 +49,7 @@ function startQuiz() {
     main.style.visibility = "visible";
     main.innerHTML = questions[0].question1;
 
-    for (var i = 0; i < questions[0].choices1.length; i++) {
+    for (var i = 0; i < 4; i++) {
 
         // Create list items buttons will render to
         var li = document.createElement("li");
