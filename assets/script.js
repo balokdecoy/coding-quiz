@@ -87,7 +87,9 @@ function startQuiz() {
         else {
             if (element.matches("button")) {
                 alert("Incorrect");
-                
+                --userScore;
+                console.log(userScore);
+                localStorage.setItem("userScore", JSON.stringify(userScore));
             }
         }
     })
