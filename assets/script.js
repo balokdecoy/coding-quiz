@@ -5,7 +5,6 @@ var body = document.body;
 var h1El = document.getElementById("jumboHead");
 var jumbo = document.getElementById("myJumbo");
 var startBtn = document.getElementById("startBtn");
-var progBar =  document.getElementById("progBar");
 var main = document.getElementById("main");
 var timer = document.getElementById("timer");
 
@@ -13,7 +12,6 @@ var timer = document.getElementById("timer");
 h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 2 seconds off your time.";
 startBtn.textContent = "Start";
-progBar.style.visibility = "hidden";
 main.style.visibility = "hidden";
 var userAnswers = [];
 var multipleChoice = [];
@@ -31,10 +29,10 @@ var questions = [
     {
         question1: "Question 1: Who invented Linux?",
         choices1: [
-            "a. Linus Torvalds",
-            "b. Bruce Springsteen",
-            "c. Bill Gates",
-            "d. Steve Jobs",
+            "Linus Torvalds",
+            "Bruce Springsteen",
+            "Bill Gates",
+            "Steve Jobs",
         ],
         correct1: "Linus Torvalds",
     },
@@ -53,7 +51,6 @@ var questions = [
 // Function that starts quiz logic when user clicks Submit
 function startQuiz() {
     startBtn.style.visibility = "hidden";
-    progBar.style.visibility = "visible";
     main.style.visibility = "visible";
     main.innerHTML = questions[0].question1;
 
@@ -66,47 +63,34 @@ function startQuiz() {
         // Create buttons with text content from questions index
         var button = document.createElement("button");
         button.textContent = questions[0].choices1[i];
-        button.className = "btn btn-info myBtn";
+        button.className = "btn btn-info myBtn " + [i];
 
         // Send button list to HTML
         li.appendChild(button);
         main.appendChild(li);
-        multipleChoice.push(button);
+        //multipleChoice.push(button);
 
-        console.log(multipleChoice[i]);
+        //console.log(button.className);
     }
 
     main.addEventListener("click", function(event) {
         var element = event.target;
+        console.log(event.target.textContent);
 
-        if (element.matches("button") === true) {
-            if (button.textContent == questions[0].choices1[0]) {
-                alert("Correct");
-            }
-            else {
-                alert("incorrect");
+        if (element.matches("button") === true && event.target.textContent === questions[0].correct1) {
+            alert("Correct");
+            ++userScore;
+            console.log(userScore);
+
+            localStorage.setItem("userScore", JSON.stringify(userScore));
+        }
+        else {
+            if (element.matches("button")) {
+                alert("Incorrect");
+                
             }
         }
     })
-}
-
-    //Question 1
-    /*
-    main.textContent = questions[0].question1;
-    linebreak();
-    for (var i = 0; i < questions[0].choices1.length; i++) {
-        var buttons = document.createElement("button");
-        buttons.className = "btn btn-info myBtn";
-        buttons.textContent += questions[0].choices1[i];
-        main.appendChild(buttons);
-        linebreak();
-    }
-
-    buttons.addEventListener("click", function() {
-        console.log(questions[0].correct1);
-        console.log("Correctamundo");
-    })
-    
 
     // Timer function
     function setTime() {
@@ -121,4 +105,4 @@ function startQuiz() {
         }, 1000);
     }
     setTime();
-*/
+}
