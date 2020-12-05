@@ -28,6 +28,15 @@ body {
     font-size: small;
 }
 
+#quizHome {
+    position: absolute;
+    top: 5px;
+    right:20px;
+    text-align: right;
+    color: lime;
+    font-size: small;
+}
+
 #main {
     font-size: large;
 }
