@@ -170,9 +170,9 @@ function timePenalty() {
     timeRem -= 5;
 }
 
-// End quiz logic 
+// End quiz 
 function endQuiz() {
-    
+    window.open("./assets/high-scores.html", "_self");
 }
 
 // Event listener for button clicks
