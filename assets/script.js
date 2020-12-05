@@ -15,6 +15,7 @@ jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. 
 startBtn.textContent = "Start";
 main.style.visibility = "hidden";
 showScores.textContent = "View High Scores";
+showScores.setAttribute("href", "./assets/high-scores.html");
 var userScore = "";
 var timeRem = 120;
 
