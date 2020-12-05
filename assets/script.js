@@ -14,6 +14,7 @@ h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 5 seconds off your time.";
 startBtn.textContent = "Start";
 showScores.textContent = "View High Scores";
+showScores.setAttribute("href", "./assets/high-scores.html");
 main.style.visibility = "hidden";
 var userScore = "";
 var timeRem = 120;
