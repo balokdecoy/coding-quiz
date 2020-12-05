@@ -7,11 +7,13 @@ var jumbo = document.getElementById("myJumbo");
 var startBtn = document.getElementById("startBtn");
 var main = document.getElementById("main");
 var timer = document.getElementById("timer");
+var showScores = document.getElementById("viewHighScores");
 
 // Set default content
 h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 5 seconds off your time.";
 startBtn.textContent = "Start";
+showScores.textContent = "View High Scores";
 main.style.visibility = "hidden";
 var userScore = "";
 var timeRem = 120;
