@@ -14,10 +14,9 @@ h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 5 seconds off your time.";
 startBtn.textContent = "Start";
 showScores.textContent = "View High Scores";
-showScores.setAttribute("href", "./assets/high-scores.html");
 main.style.visibility = "hidden";
 var userScore = "";
-var timeRem = 120;
+var timeRem = 10;
 
 // Question array containing question objects
 var questions = [
@@ -110,6 +109,8 @@ var highScores = {
 
 var questionIndex = 0;
 var correctAnswer = "";
+var lastQuestion = questions[7].choices;
+console.log(questions[7].choices);
 
 function getQuestion() {
     var currentQuestion = questions[questionIndex];
@@ -157,9 +158,8 @@ function setTime() {
         timeRem--;
         timer.textContent = timeRem;
 
-        if(timeRem === 0) {
+        if(timeRem < 1) {
             clearInterval(timerInterval);
-            timer.style.visibility = "hidden";
             endQuiz();
         }
     }, 1000);
@@ -172,7 +172,9 @@ function timePenalty() {
 
 // End quiz 
 function endQuiz() {
-    window.open("./assets/high-scores.html", "_self");
+    timer.style.visibility = "hidden";
+    jumboHead.textContent = "> Coding Quiz - High Scores";
+    jumbo.textContent = "Here's the list of the high scores!";
 }
 
 // Event listener for button clicks
