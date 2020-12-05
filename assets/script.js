@@ -162,12 +162,18 @@ function setTime() {
     }, 1000);
 }
 
+// End quiz logic 
 function endQuiz() {
     
 }
 
+// Function that deducts time as a penalty for incorrect answers
+function timePenalty() {
+    timeRem -= 5;
+}
 
-// 
+
+// Event listener for button clicks
 main.addEventListener("click", function(event) {
     var element = event.target;
     console.log(event.target.textContent);
@@ -184,7 +190,7 @@ main.addEventListener("click", function(event) {
         if (element.matches("button")) {
             --userScore;
             console.log(userScore);
-            timeRem -= 5;
+            timePenalty();
 
             localStorage.setItem("userScore", JSON.stringify(userScore));
             questionIndex++;
