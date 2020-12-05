@@ -10,13 +10,13 @@ var timer = document.getElementById("timer");
 
 // Set default content
 h1El.textContent = "> Coding Quiz";
-jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 2 seconds off your time.";
+jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 5 seconds off your time.";
 startBtn.textContent = "Start";
 main.style.visibility = "hidden";
 var userScore = "";
 var timeRem = 120;
 
-// Question array with specific question objects
+// Question array containing question objects
 var questions = [
     {
         question: "Question 1: Who invented the Linux kernel?",
@@ -64,9 +64,9 @@ var questions = [
             "true",
             "function",
             "false",
-            "A & B",
+            "True and false",
         ],
-        correct: "A & B",
+        correct: "True and false",
     },
     {
         question: "Your code defines var myVariable within function myFunction(). Can you reuse myVariable outside myFunction?",
@@ -157,13 +157,13 @@ function setTime() {
         if(timeRem === 0) {
             clearInterval(timerInterval);
             timer.style.visibility = "hidden";
-            //endQuiz();
+            endQuiz();
         }
     }, 1000);
 }
 
 function endQuiz() {
-
+    
 }
 
 
@@ -173,7 +173,6 @@ main.addEventListener("click", function(event) {
     console.log(event.target.textContent);
 
     if (element.matches("button") === true && event.target.textContent === correctAnswer) {
-        alert("Correct");
         ++userScore;
         console.log(userScore);
 
@@ -183,9 +182,10 @@ main.addEventListener("click", function(event) {
     }
     else {
         if (element.matches("button")) {
-            alert("Incorrect");
             --userScore;
             console.log(userScore);
+            timeRem -= 5;
+
             localStorage.setItem("userScore", JSON.stringify(userScore));
             questionIndex++;
             getQuestion();
