@@ -17,7 +17,7 @@ nextBtn.textContent = "Next";
 nextBtn.style.visibility = "hidden";
 main.style.visibility = "hidden";
 var userScore = "";
-var timeRem = 60;
+var timeRem = 120;
 
 // Question array with specific question objects
 var questions = [
@@ -25,21 +25,81 @@ var questions = [
         question: "Question 1: Who invented the Linux kernel?",
         choices: [
             "Linus Torvalds",
-            "Bruce Springsteen",
+            "Satya Nadella",
             "Bill Gates",
             "Steve Jobs",
         ],
         correct: "Linus Torvalds",
     },
     {
-        question: "Who wrote Moby Dick?",
+        question: "What does CSS stand for?",
         choices: [
-            "JK Rowling",
-            "Barrack Obama",
-            "David Lynch",
-            "Herman Melville",
+            "Consistent Sheet Styling",
+            "Complete Styling Sheet",
+            "Copy Style Sheet",
+            "Cascading Style Sheets",
         ],
-        correct: "Herman Melville",
+        correct: "Cascading Style Sheets",
+    },
+    {
+        question: "In the function 'function myFunction(potatoes) {}', what does 'potatoes' represent?",
+        choices: [
+            "Identifier",
+            "Name",
+            "Parameter",
+            "Functional",
+        ],
+        correct: "Parameter",
+    },
+    {
+        question: "What git command pushes changes from your local machine to your Github repository?",
+        choices: [
+            "git push origin main",
+            "push changes.git",
+            "git add .",
+            "git this",
+        ],
+        correct: "git push origin main",
+    },
+    {
+        question: "Which of the following is an example of a Boolean value?",
+        choices: [
+            "true",
+            "function",
+            "false",
+            "A & B",
+        ],
+        correct: "A & B",
+    },
+    {
+        question: "Your code defines var myVariable within function myFunction(). Can you reuse myVariable outside myFunction?",
+        choices: [
+            "No, local variables cannot be called outside their parent function.",
+            "Yes, local variables can be reused anywhere in your code.",
+            "Yes, variables defined in a function are considered global variables.",
+            "No, variables cannot be declared within a function.",
+        ],
+        correct: "No, local variables cannot be called outside their parent function.",
+    },
+    {
+        question: "In the loop 'for (i = 0; i < myList.length; i++)', how many times will the loop run?",
+        choices: [
+            "0",
+            "2",
+            "As many times as the length of the myList variable.",
+            "It will return a syntax error. You need to define the loop number.",
+        ],
+        correct: "As many times as the length of the myList variable.",
+    },
+    {
+        question: "Which link should you generally place at the bottom of your HTML?",
+        choices: [
+            "Javascript link, so that your scripts load after the HTML and styling.",
+            "CSS link, so the styling loads after the HTML and scripts.",
+            "Google Fonts, per Google's documentation.",
+            "It doesn't matter. You can set external links anywhere in the HTML.",
+        ],
+        correct: "Javascript link, so that your scripts load after the HTML and styling.",
     },
 ]
 
@@ -88,7 +148,6 @@ function startQuiz() {
     startBtn.style.visibility = "hidden";
     main.style.visibility = "visible";
     nextBtn.style.visibility = "visible";
-    main.innerHTML = questions[0].question1;
     getQuestion();
     setTime();
 }
