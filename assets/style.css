@@ -30,8 +30,3 @@ body {
 li {
     list-style-type: none;
 }
-
-#nextBtn {
-    position: relative;
-    margin-top: 100px;
-}

@@ -5,7 +5,6 @@ var body = document.body;
 var h1El = document.getElementById("jumboHead");
 var jumbo = document.getElementById("myJumbo");
 var startBtn = document.getElementById("startBtn");
-var nextBtn = document.getElementById("nextBtn");
 var main = document.getElementById("main");
 var timer = document.getElementById("timer");
 
@@ -13,8 +12,6 @@ var timer = document.getElementById("timer");
 h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 2 seconds off your time.";
 startBtn.textContent = "Start";
-nextBtn.textContent = "Next";
-nextBtn.style.visibility = "hidden";
 main.style.visibility = "hidden";
 var userScore = "";
 var timeRem = 120;
@@ -147,7 +144,6 @@ console.log(correctAnswer);
 function startQuiz() {
     startBtn.style.visibility = "hidden";
     main.style.visibility = "visible";
-    nextBtn.style.visibility = "visible";
     getQuestion();
     setTime();
 }
