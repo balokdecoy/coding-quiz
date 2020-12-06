@@ -1,8 +1,17 @@
+/*The terminal-like styling is based off a CSS design by Chris Coyier for css-tricks.com
+Credit details in the README*/
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inconsolata", "monospace";
+    font: 1.3rem;
     font-size: 30px;
     font-weight: bold;
+    background-color: black;
+    background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+    height: 100vh;
+    color: white;
+    text-shadow: 0 0 5px #C8C8C8;
 }
+
 
 #jumboMain {
     background-color: black;

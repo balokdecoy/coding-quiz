@@ -11,10 +11,17 @@ var showScores = document.getElementById("viewHighScores");
 var formSubmit = document.getElementById("formSubmit");
 var resultsPage = document.getElementById("results");
 
+// Create form submission elements
+var form = document.createElement("form");
+var label = document.createElement("label");
+var input = document.createElement("input");
+var submit = document.createElement("input");
+var line = document.createElement("br");
+
 // Set default content
 h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 5 seconds off your time.";
-startBtn.textContent = "Start";
+startBtn.textContent = "Run Program";
 showScores.textContent = "View High Scores";
 main.style.visibility = "hidden";
 var userScore = "";
@@ -33,7 +40,7 @@ var questions = [
         correct: "Linus Torvalds",
     },
     {
-        question: "What does CSS stand for?",
+        question: "Question 2: What does CSS stand for?",
         choices: [
             "Consistent Sheet Styling",
             "Complete Styling Sheet",
@@ -43,7 +50,7 @@ var questions = [
         correct: "Cascading Style Sheets",
     },
     {
-        question: "In the function 'function myFunction(potatoes) {}', what does 'potatoes' represent?",
+        question: "Question 3: In the function 'function myFunction(potatoes) {}', what does 'potatoes' represent?",
         choices: [
             "Identifier",
             "Name",
@@ -53,7 +60,7 @@ var questions = [
         correct: "Parameter",
     },
     {
-        question: "What git command pushes changes from your local machine to your Github repository?",
+        question: "Question 4: What git command pushes changes from your local machine to your Github repository?",
         choices: [
             "git push origin main",
             "push changes.git",
@@ -63,7 +70,7 @@ var questions = [
         correct: "git push origin main",
     },
     {
-        question: "Which of the following is an example of a Boolean value?",
+        question: "Question 5: Which of the following is an example of a Boolean value?",
         choices: [
             "true",
             "function",
@@ -73,7 +80,7 @@ var questions = [
         correct: "True and false",
     },
     {
-        question: "Your code defines var myVariable within function myFunction(). Can you reuse myVariable outside myFunction?",
+        question: "Question 6: Your code defines var myVariable within function myFunction(). Can you reuse myVariable outside myFunction?",
         choices: [
             "No, local variables cannot be called outside their parent function.",
             "Yes, local variables can be reused anywhere in your code.",
@@ -83,7 +90,7 @@ var questions = [
         correct: "No, local variables cannot be called outside their parent function.",
     },
     {
-        question: "In the loop 'for (i = 0; i < myList.length; i++)', how many times will the loop run?",
+        question: "Question 7: In the loop 'for (i = 0; i < myList.length; i++)', how many times will the loop run?",
         choices: [
             "0. i=0 is a default setting.",
             "2. i++ indicates two loops.",
@@ -93,7 +100,7 @@ var questions = [
         correct: "As many times as the length of the myList variable.",
     },
     {
-        question: "Which link should you generally place at the bottom of your HTML?",
+        question: "Question 8: Which link should you generally place at the bottom of your HTML?",
         choices: [
             "Javascript link, so that your scripts load after the HTML and styling.",
             "CSS link, so the styling loads after the HTML and scripts.",
@@ -122,7 +129,6 @@ function getQuestion() {
         // Create buttons with text content from questions index
         var button = document.createElement("button");
         button.textContent = currentQuestion.choices[i];
-        button.className = "btn btn-info myBtn ";
 
         // Send button list to HTML
         li.appendChild(button);
@@ -164,10 +170,30 @@ function timePenalty() {
     timeRem -= 5;
 }
 
+// Function to set attributes dynamically.
+// Borrowed from StackOverflow response. Credited in README.
+function attrs(element, attributes) {
+    for (var key in attributes) {
+        element.setAttribute(key, attributes[key]);
+    }
+}
+
 // End quiz 
 function endQuiz() {
-    main.textContent = "Hello world";
+    timer.textContent = "";
+    main.textContent = "> Coding Quiz Program Terminated. Enter initials below.";
 
+    // Call attrs function to set attributes for elements
+    attrs(label, {"for": "userInitials", "margin-top": "10px"});
+    attrs(input, {"type": "text", "id": "userInitials", "maxlength": "3"});
+    attrs(submit, {"type": "submit", "value": "Submit"});
+
+    // Add content to the page
+    main.appendChild(form)
+    form.appendChild(label);
+    form.appendChild(line);
+    form.appendChild(input);
+    form.appendChild(submit);
 }
 
 // Event listener for button clicks
@@ -176,12 +202,14 @@ main.addEventListener("click", function(event) {
     var userClick = event.target.textContent;
     console.log(userClick);
 
+    // If user answer is correct
     if (element.matches("button") === true && event.target.textContent === correctAnswer) {
         ++userScore;
         console.log(userScore);
 
         localStorage.setItem("userScore", JSON.stringify(userScore));
         questionIndex++;
+        // Pull another question only within questionIndex length
         if (questionIndex < 8) {
         getQuestion();
         }
@@ -189,6 +217,7 @@ main.addEventListener("click", function(event) {
             endQuiz();
         }
     }
+    // If user answer is incorrect
     else {
         if (element.matches("button")) {
             --userScore;
@@ -197,6 +226,7 @@ main.addEventListener("click", function(event) {
 
             localStorage.setItem("userScore", JSON.stringify(userScore));
             questionIndex++;
+            // Pull another question only within question index length
             if (questionIndex < 8) {
                 getQuestion();
             }
