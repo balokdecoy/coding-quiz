@@ -102,16 +102,6 @@ var questions = [
     },
 ]
 
-/*var receiveHighScores = {
-    message: "Coding Quiz has ended! Enter your initials below.",
-    initials: "",
-    score: "",
-};
-
-var displayHighScores = {
-
-}*/
-
 var questionIndex = 0;
 var correctAnswer = "";
 var lastQuestion = questions[7].choices;
@@ -176,9 +166,7 @@ function timePenalty() {
 
 // End quiz 
 function endQuiz() {
-    timer.style.visibility = "hidden";
-    jumboHead.textContent = "> Coding Quiz - High Scores";
-    jumbo.textContent = "Here's the list of the high scores!";
+    window.open("https://balokdecoy.github.io/coding-quiz/assets/high-scores.html", "_self");
 }
 
 // Event listener for button clicks
