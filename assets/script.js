@@ -8,6 +8,8 @@ var startBtn = document.getElementById("startBtn");
 var main = document.getElementById("main");
 var timer = document.getElementById("timer");
 var showScores = document.getElementById("viewHighScores");
+var formSubmit = document.getElementById("formSubmit");
+var resultsPage = document.getElementById("results");
 
 // Set default content
 h1El.textContent = "> Coding Quiz";
@@ -104,13 +106,10 @@ var questions = [
 
 var questionIndex = 0;
 var correctAnswer = "";
-var lastQuestion = questions[7].choices;
 
 function getQuestion() {
     var currentQuestion = questions[questionIndex];
-    console.log(currentQuestion.choices);
     currentQuestion.correct;
-    console.log(currentQuestion.correct);
     main.textContent = currentQuestion.question;
     
     for (var i = 0; i < currentQuestion.choices.length; i++) {
@@ -134,7 +133,13 @@ function getQuestion() {
         // Write current correct answer to the correctAnswer variable for testing
         correctAnswer = currentQuestion.correct;
     }
+
+    if (!questions) {
+        endQuiz();
+    }
 }
+
+
 getQuestion();
 console.log(correctAnswer);
 
@@ -172,7 +177,8 @@ function endQuiz() {
 // Event listener for button clicks
 main.addEventListener("click", function(event) {
     var element = event.target;
-    console.log(event.target.textContent);
+    var userClick = event.target.textContent;
+    console.log(userClick);
 
     if (element.matches("button") === true && event.target.textContent === correctAnswer) {
         ++userScore;
@@ -193,4 +199,5 @@ main.addEventListener("click", function(event) {
             getQuestion();
         }
     }
-})
+}
+)

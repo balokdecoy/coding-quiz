@@ -34,4 +34,3 @@ form.appendChild(label);
 form.appendChild(line);
 form.appendChild(input);
 form.appendChild(submit);
-
