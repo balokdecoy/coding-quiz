@@ -102,10 +102,15 @@ var questions = [
     },
 ]
 
-var highScores = {
+/*var receiveHighScores = {
+    message: "Coding Quiz has ended! Enter your initials below.",
     initials: "",
     score: "",
 };
+
+var displayHighScores = {
+
+}*/
 
 var questionIndex = 0;
 var correctAnswer = "";
@@ -174,7 +179,6 @@ function endQuiz() {
     timer.style.visibility = "hidden";
     jumboHead.textContent = "> Coding Quiz - High Scores";
     jumbo.textContent = "Here's the list of the high scores!";
-    
 }
 
 // Event listener for button clicks
