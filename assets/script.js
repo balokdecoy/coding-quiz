@@ -104,12 +104,13 @@ var questions = [
     },
 ]
 
+// Create global variables to store current question object and current correct answer
 var questionIndex = 0;
 var correctAnswer = "";
 
+// Generate a question
 function getQuestion() {
     var currentQuestion = questions[questionIndex];
-    currentQuestion.correct;
     main.textContent = currentQuestion.question;
     
     for (var i = 0; i < currentQuestion.choices.length; i++) {
@@ -132,16 +133,10 @@ function getQuestion() {
 
         // Write current correct answer to the correctAnswer variable for testing
         correctAnswer = currentQuestion.correct;
-    }
 
-    if (!questions) {
-        endQuiz();
+        console.log(questionIndex);
     }
 }
-
-
-getQuestion();
-console.log(correctAnswer);
 
 // Function that starts quiz logic when user clicks Submit
 function startQuiz() {
@@ -171,7 +166,8 @@ function timePenalty() {
 
 // End quiz 
 function endQuiz() {
-    window.open("https://balokdecoy.github.io/coding-quiz/assets/high-scores.html", "_self");
+    main.textContent = "Hello world";
+
 }
 
 // Event listener for button clicks
@@ -186,7 +182,12 @@ main.addEventListener("click", function(event) {
 
         localStorage.setItem("userScore", JSON.stringify(userScore));
         questionIndex++;
+        if (questionIndex < 8) {
         getQuestion();
+        }
+        else {
+            endQuiz();
+        }
     }
     else {
         if (element.matches("button")) {
@@ -196,7 +197,12 @@ main.addEventListener("click", function(event) {
 
             localStorage.setItem("userScore", JSON.stringify(userScore));
             questionIndex++;
-            getQuestion();
+            if (questionIndex < 8) {
+                getQuestion();
+            }
+            else {
+                endQuiz();
+            }
         }
     }
 }
