@@ -110,7 +110,6 @@ var highScores = {
 var questionIndex = 0;
 var correctAnswer = "";
 var lastQuestion = questions[7].choices;
-console.log(questions[7].choices);
 
 function getQuestion() {
     var currentQuestion = questions[questionIndex];
@@ -175,6 +174,7 @@ function endQuiz() {
     timer.style.visibility = "hidden";
     jumboHead.textContent = "> Coding Quiz - High Scores";
     jumbo.textContent = "Here's the list of the high scores!";
+    
 }
 
 // Event listener for button clicks
