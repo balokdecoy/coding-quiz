@@ -83,10 +83,10 @@ var questions = [
     {
         question: "In the loop 'for (i = 0; i < myList.length; i++)', how many times will the loop run?",
         choices: [
-            "0",
-            "2",
+            "0. i=0 is a default setting.",
+            "2. i++ indicates two loops.",
             "As many times as the length of the myList variable.",
-            "It will return a syntax error. You need to define the loop number.",
+            "The console will return a syntax error. You need to define the loop number.",
         ],
         correct: "As many times as the length of the myList variable.",
     },
