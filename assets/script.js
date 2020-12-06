@@ -180,7 +180,7 @@ function attrs(element, attributes) {
 
 // End quiz 
 function endQuiz() {
-    timer.textContent = "";
+    timer.style.visibility = "hidden";
     main.textContent = "> Coding Quiz Program Terminated. Enter initials below.";
 
     // Call attrs function to set attributes for elements
