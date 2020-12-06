@@ -16,7 +16,7 @@ startBtn.textContent = "Start";
 showScores.textContent = "View High Scores";
 main.style.visibility = "hidden";
 var userScore = "";
-var timeRem = 10;
+var timeRem = 60;
 
 // Question array containing question objects
 var questions = [
