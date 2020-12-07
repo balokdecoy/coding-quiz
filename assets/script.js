@@ -281,6 +281,7 @@ function showHighScores() {
     var lastUser = JSON.parse(localStorage.getItem("allUsers"));
     console.log(lastUser);
     lastUser.sort((a, b) => a.score - b.score);
+    lastUser.reverse();
     console.log(lastUser);
     for (var i = 0; i < allUsers.length; i++) {
         var div = document.createElement("div");
