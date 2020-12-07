@@ -260,6 +260,7 @@ submit.addEventListener("click", function(event) {
 
 // High Scores Display
 function showHighScores() {
+    timeRem = 0;
     main.textContent = "HIGH SCORES: ";
     var lastUser = JSON.parse(localStorage.getItem("user"));
     main.appendChild(div);
