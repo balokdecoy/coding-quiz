@@ -30,6 +30,9 @@ var timeRem = 60;
 var questionIndex = 0;
 var correctAnswer = "";
 var allUsers = []
+var pastUsers = [];
+
+init();
 
 // Question array containing question objects
 var questions = [
@@ -184,7 +187,7 @@ function attrs(element, attributes) {
 function endQuiz() {
     timer.style.visibility = "hidden";
     timeRem = 0;
-    main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore+ "! Enter initials below.";
+    main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore + "! Enter initials below.";
 
     // Call attrs function to set attributes for elements
     attrs(label, {"for": "userInitials", "margin-top": "10px"});
@@ -240,6 +243,20 @@ main.addEventListener("click", function(event) {
 }
 )
 
+function init() {
+    var storedUsers = JSON.parse(localStorage.getItem("allUsers"));
+
+    if (storedUsers !== null) {
+        allUsers = storedUsers;
+    }
+    console.log(allUsers);
+}
+
+
+function recUsers() {
+    localStorage.setItem("allUsers", JSON.stringify(allUsers));
+}
+
 // High score submission form listener
 submit.addEventListener("click", function(event) {
     event.preventDefault();
@@ -252,18 +269,19 @@ submit.addEventListener("click", function(event) {
    if (user.user === "") {
        alert("Please enter your initials")
    }
-   else{
-    localStorage.setItem("user", JSON.stringify(user));
+    allUsers.push(user);
+    console.log(allUsers);
+    //init();
+    recUsers();
     showHighScores();
-   }
 })
 
 // High Scores Display
 function showHighScores() {
-    timeRem = 0;
+    timeRem = 0
     main.textContent = "HIGH SCORES: ";
-    var lastUser = JSON.parse(localStorage.getItem("user"));
-    main.appendChild(div);
-    div.textContent = "PLAYER: " + lastUser.user + " SCORE: " + lastUser.score;
-    div.appendChild(line);
+    
+    //var lastUser = JSON.parse(localStorage.getItem("user"));
+    //main.appendChild(div);
+    //div.textContent = "PLAYER: " + lastUser.user + " SCORE: " + lastUser.score;
 }
