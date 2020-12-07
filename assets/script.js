@@ -183,6 +183,7 @@ function attrs(element, attributes) {
 // End quiz and display submission form
 function endQuiz() {
     timer.style.visibility = "hidden";
+    timeRem = 0;
     main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore+ "! Enter initials below.";
 
     // Call attrs function to set attributes for elements
