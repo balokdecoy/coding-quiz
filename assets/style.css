@@ -12,7 +12,6 @@ body {
     text-shadow: 0 0 5px #C8C8C8;
 }
 
-
 #jumboMain {
     background-color: black;
 }
@@ -35,6 +34,12 @@ body {
     text-align: right;
     color: lime;
     font-size: small;
+}
+
+#timer {
+    position: absolute;
+    right: 10px;
+    text-align: right;
 }
 
 #backHome {

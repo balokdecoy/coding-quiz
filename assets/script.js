@@ -17,15 +17,19 @@ var label = document.createElement("label");
 var input = document.createElement("input");
 var submit = document.createElement("input");
 var line = document.createElement("br");
+var div = document.createElement("div");
 
-// Set default content
+// Set defaults
 h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 5 seconds off your time.";
 startBtn.textContent = "Run Program";
 showScores.textContent = "View High Scores";
 main.style.visibility = "hidden";
-var userScore = "";
+var userScore = 0;
 var timeRem = 60;
+var questionIndex = 0;
+var correctAnswer = "";
+var allUsers = []
 
 // Question array containing question objects
 var questions = [
@@ -111,9 +115,7 @@ var questions = [
     },
 ]
 
-// Create global variables to store current question object and current correct answer
-var questionIndex = 0;
-var correctAnswer = "";
+// FUNCTIONS
 
 // Generate a question
 function getQuestion() {
@@ -144,7 +146,7 @@ function getQuestion() {
     }
 }
 
-// Function that starts quiz logic when user clicks Submit
+// Start quiz when user clicks Run Program
 function startQuiz() {
     startBtn.style.visibility = "hidden";
     main.style.visibility = "visible";
@@ -158,14 +160,14 @@ function setTime() {
         timeRem--;
         timer.textContent = timeRem;
 
-        if(timeRem < 1) {
+        if(timeRem < 0) {
             clearInterval(timerInterval);
             endQuiz();
         }
     }, 1000);
 }
 
-// Function that deducts time as a penalty for incorrect answers
+// Deduct time as penalty for incorrect answers
 function timePenalty() {
     timeRem -= 5;
 }
@@ -178,10 +180,10 @@ function attrs(element, attributes) {
     }
 }
 
-// End quiz 
+// End quiz and display submission form
 function endQuiz() {
     timer.style.visibility = "hidden";
-    main.textContent = "> Coding Quiz Program Terminated. Enter initials below.";
+    main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore+ "! Enter initials below.";
 
     // Call attrs function to set attributes for elements
     attrs(label, {"for": "userInitials", "margin-top": "10px"});
@@ -196,6 +198,8 @@ function endQuiz() {
     form.appendChild(submit);
 }
 
+// EVENT LISTENERS
+
 // Event listener for button clicks
 main.addEventListener("click", function(event) {
     var element = event.target;
@@ -206,8 +210,6 @@ main.addEventListener("click", function(event) {
     if (element.matches("button") === true && event.target.textContent === correctAnswer) {
         ++userScore;
         console.log(userScore);
-
-        localStorage.setItem("userScore", JSON.stringify(userScore));
         questionIndex++;
         // Pull another question only within questionIndex length
         if (questionIndex < 8) {
@@ -223,17 +225,45 @@ main.addEventListener("click", function(event) {
             --userScore;
             console.log(userScore);
             timePenalty();
-
-            localStorage.setItem("userScore", JSON.stringify(userScore));
             questionIndex++;
             // Pull another question only within question index length
             if (questionIndex < 8) {
                 getQuestion();
             }
             else {
+
                 endQuiz();
             }
         }
     }
 }
 )
+
+// High score submission form listener
+submit.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+   var user = {
+       user: input.value,
+       score: userScore,
+   }
+   console.log(user);
+   if (user.user === "") {
+       alert("Please enter your initials")
+   }
+   else{
+    localStorage.setItem("user", JSON.stringify(user));
+    allUsers.push(user);
+    console.log(allUsers);
+    showHighScores();
+   }
+})
+
+// High Scores Display
+function showHighScores() {
+    main.textContent = "HIGH SCORES: ";
+    var lastUser = JSON.parse(localStorage.getItem("user"));
+    main.appendChild(div);
+    div.textContent = "PLAYER: " + lastUser.user + " SCORE: " + lastUser.score;
+    div.appendChild(line);
+}
