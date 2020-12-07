@@ -253,8 +253,6 @@ submit.addEventListener("click", function(event) {
    }
    else{
     localStorage.setItem("user", JSON.stringify(user));
-    allUsers.push(user);
-    console.log(allUsers);
     showHighScores();
    }
 })
