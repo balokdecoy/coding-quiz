@@ -271,7 +271,6 @@ submit.addEventListener("click", function(event) {
    }
     allUsers.push(user);
     console.log(allUsers);
-    //init();
     recUsers();
     showHighScores();
 })
@@ -280,8 +279,12 @@ submit.addEventListener("click", function(event) {
 function showHighScores() {
     timeRem = 0
     main.textContent = "HIGH SCORES: ";
-    
-    //var lastUser = JSON.parse(localStorage.getItem("user"));
-    //main.appendChild(div);
-    //div.textContent = "PLAYER: " + lastUser.user + " SCORE: " + lastUser.score;
+
+    for (var i = 0; i < allUsers.length; i++) {
+        var div = document.createElement("div");
+        var li = document.createElement("li");
+        var lastUser = JSON.parse(localStorage.getItem("allUsers"));
+        div.textContent = "PLAYER: " + lastUser[i].user + " SCORE: " + lastUser[i].score;
+        main.append(div);
+    }
 }
