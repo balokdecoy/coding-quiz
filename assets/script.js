@@ -270,7 +270,6 @@ submit.addEventListener("click", function(event) {
        alert("Please enter your initials")
    }
     allUsers.push(user);
-    console.log(allUsers);
     recUsers();
     showHighScores();
 })
@@ -279,12 +278,15 @@ submit.addEventListener("click", function(event) {
 function showHighScores() {
     timeRem = 0
     main.textContent = "HIGH SCORES: ";
-
+    var lastUser = JSON.parse(localStorage.getItem("allUsers"));
+    console.log(lastUser);
+    lastUser.sort((a, b) => a.score - b.score);
+    console.log(lastUser);
     for (var i = 0; i < allUsers.length; i++) {
         var div = document.createElement("div");
         var li = document.createElement("li");
-        var lastUser = JSON.parse(localStorage.getItem("allUsers"));
-        div.textContent = "PLAYER: " + lastUser[i].user + " SCORE: " + lastUser[i].score;
         main.append(div);
+        div.appendChild(li);
+        li.textContent = "PLAYER: " + lastUser[i].user + " SCORE: " + lastUser[i].score;
     }
 }
