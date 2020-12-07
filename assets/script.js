@@ -226,7 +226,9 @@ main.addEventListener("click", function(event) {
     // If user answer is incorrect
     else {
         if (element.matches("button")) {
-            --userScore;
+            if (userScore > 0) {
+                --userScore;
+            }
             console.log(userScore);
             timePenalty();
             questionIndex++;
