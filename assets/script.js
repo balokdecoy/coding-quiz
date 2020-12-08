@@ -167,10 +167,9 @@ function startQuiz() {
 }
 
 
-// Timer function
+// TIMER FUNCTIONS
 
-//var timerVar = setInterval(newTimer, 1000);
-
+// Initiate timer
 function newTimer () {
     timeRem--;
     timer.textContent = timeRem;
@@ -181,25 +180,10 @@ function newTimer () {
     }
 }
 
+// Clear the timer
 function stopTimer () {
     clearInterval(holdTimer);
 }
-
-// function setTime() {
-//     var timerInterval = setInterval(function() {
-//         timeRem--;
-//         timer.textContent = timeRem;
-
-//         if(timeRem < 0 ) {
-//             clearInterval(timerInterval);
-//             timer.style.visibility = "hidden";
-//             userInfo();
-//             //endQuiz();
-//         }
-//     }, 1000);
-// }
-
-
 
 // Deduct time as penalty for incorrect answers
 function timePenalty() {
@@ -214,25 +198,7 @@ function attrs(element, attributes) {
     }
 }
 
-// End quiz and display submission form
-//function endQuiz() {
-    //stopTimer()
-    //timeRem = 0;
-    // main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore + "! Enter initials below.";
-
-    // // Call attrs function to set attributes for elements
-    // attrs(label, {"for": "userInitials", "margin-top": "10px"});
-    // attrs(input, {"type": "text", "id": "userInitials", "maxlength": "3"});
-    // attrs(submit, {"type": "submit", "value": "Submit"});
-
-    // // Add content to the page
-    // main.appendChild(form)
-    // form.appendChild(label);
-    // form.appendChild(line);
-    // form.appendChild(input);
-    // form.appendChild(submit);
-//}
-
+// Submission form creation at quiz completion. Receive user initials for High Scores. 
 function userInfo () {
     main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore + "! Enter initials below.";
 
@@ -251,7 +217,7 @@ function userInfo () {
 
 // EVENT LISTENERS
 
-// Event listener for button clicks
+// Event listener for response button clicks
 main.addEventListener("click", function(event) {
     var element = event.target;
     var userClick = event.target.textContent;
@@ -296,6 +262,7 @@ main.addEventListener("click", function(event) {
 }
 )
 
+// Check for high scores in local storage and add to allUsers array
 function init() {
     var storedUsers = JSON.parse(localStorage.getItem("allUsers"));
 
@@ -306,11 +273,12 @@ function init() {
 }
 
 
+// Send allUsers array to local storage
 function recUsers() {
     localStorage.setItem("allUsers", JSON.stringify(allUsers));
 }
 
-// High score submission form listener
+// High score submission listener 
 submit.addEventListener("click", function(event) {
     event.preventDefault();
     stopTimer();
@@ -355,6 +323,7 @@ function showHighScores() {
     }
 }
 
+// Button to clear local storage and delete high scores from page
 function clearStorage () {
     localStorage.clear();
     main.textContent = "";
