@@ -321,9 +321,11 @@ submit.addEventListener("click", function(event) {
    if (user.user === "") {
        alert("Please enter your initials")
    }
+   else {
     allUsers.push(user);
     recUsers();
     showHighScores();
+   }
 })
 
 // High Scores Display
