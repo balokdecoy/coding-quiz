@@ -358,4 +358,5 @@ function showHighScores() {
 function clearStorage () {
     localStorage.clear();
     main.textContent = "";
+    main.textContent = "HIGH SCORES: ";
 }
