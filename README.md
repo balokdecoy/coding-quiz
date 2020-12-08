@@ -67,8 +67,8 @@ Thanks to John Herman, GWU tutor, for his assistance with organizing my function
 
 Thanks to Amir Ashtiany, Young Ji Kim, Beatrice Ellingson, Frankie Rosado, and Rachel Wanke for their feedback, support, and brainstorming. Visit their Github pages here:
 
-Amir Ashtiany - https://github.com/Alexfit4
-Young Ji Kim - https://github.com/youjmi
-Beatrice Ellingson - https://github.com/beatricellingson
-Frankie Rosado - https://github.com/Franciscorosado09
-Rachel Wanke: - https://github.com/rwanke14 
+1. Amir Ashtiany - https://github.com/Alexfit4
+2. Young Ji Kim - https://github.com/youjmi
+3. Beatrice Ellingson - https://github.com/beatricellingson
+4. Frankie Rosado - https://github.com/Franciscorosado09
+5. Rachel Wanke: - https://github.com/rwanke14 
