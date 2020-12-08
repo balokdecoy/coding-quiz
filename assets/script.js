@@ -11,6 +11,7 @@ var showScores = document.getElementById("viewHighScores");
 var formSubmit = document.getElementById("formSubmit");
 var resultsPage = document.getElementById("results");
 var backHome = document.getElementById("backHome");
+var emptyStorage = document.getElementById("emptyStorage");
 
 // Create form submission elements
 var form = document.createElement("form");
@@ -26,8 +27,10 @@ jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. 
 startBtn.textContent = "Run Program";
 showScores.textContent = "View High Scores";
 backHome.textContent = "Homepage";
+emptyStorage.textContent = "Clear High Scores";
 main.style.visibility = "hidden";
 backHome.style.visibility = "hidden";
+emptyStorage.style.visibility = "hidden";
 var userScore = 0;
 var holdTimer;
 var timeRem = 60;
@@ -336,6 +339,7 @@ function showHighScores() {
     showScores.style.visibility = "hidden";
     backHome.style.visibility = "visible";
     main.style.visibility = "visible";
+    emptyStorage.style.visibility = "visible";
     main.textContent = "HIGH SCORES: ";
     var lastUser = JSON.parse(localStorage.getItem("allUsers"));
     console.log(lastUser);
@@ -349,4 +353,9 @@ function showHighScores() {
         div.appendChild(li);
         li.textContent = "PLAYER: " + lastUser[i].user + " SCORE: " + lastUser[i].score;
     }
+}
+
+function clearStorage () {
+    localStorage.clear();
+    main.textContent = "";
 }

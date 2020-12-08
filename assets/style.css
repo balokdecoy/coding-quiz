@@ -62,3 +62,10 @@ body {
 li {
     list-style-type: none;
 }
+
+#emptyStorage {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    font-size: small;
+}
