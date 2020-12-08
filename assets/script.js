@@ -10,6 +10,7 @@ var timer = document.getElementById("timer");
 var showScores = document.getElementById("viewHighScores");
 var formSubmit = document.getElementById("formSubmit");
 var resultsPage = document.getElementById("results");
+var backHome = document.getElementById("backHome");
 
 // Create form submission elements
 var form = document.createElement("form");
@@ -24,8 +25,11 @@ h1El.textContent = "> Coding Quiz";
 jumbo.textContent = "Test your coding knowledge with this multiple choice quiz. Incorrect answers knock 5 seconds off your time.";
 startBtn.textContent = "Run Program";
 showScores.textContent = "View High Scores";
+backHome.textContent = "Homepage";
 main.style.visibility = "hidden";
+backHome.style.visibility = "hidden";
 var userScore = 0;
+var holdTimer;
 var timeRem = 60;
 var questionIndex = 0;
 var correctAnswer = "";
@@ -153,22 +157,46 @@ function getQuestion() {
 function startQuiz() {
     startBtn.style.visibility = "hidden";
     main.style.visibility = "visible";
+    timer.style.visibility = "visible";
+    var timerVar = setInterval(newTimer, 1000);
+    holdTimer = timerVar;
     getQuestion();
-    setTime();
 }
+
 
 // Timer function
-function setTime() {
-    var timerInterval = setInterval(function() {
-        timeRem--;
-        timer.textContent = timeRem;
 
-        if(timeRem < 0) {
-            clearInterval(timerInterval);
-            endQuiz();
-        }
-    }, 1000);
+//var timerVar = setInterval(newTimer, 1000);
+
+function newTimer () {
+    timeRem--;
+    timer.textContent = timeRem;
+    if (timeRem < 0) {
+        stopTimer();
+        userInfo();
+        timer.style.visibility = "hidden";
+    }
 }
+
+function stopTimer () {
+    clearInterval(holdTimer);
+}
+
+// function setTime() {
+//     var timerInterval = setInterval(function() {
+//         timeRem--;
+//         timer.textContent = timeRem;
+
+//         if(timeRem < 0 ) {
+//             clearInterval(timerInterval);
+//             timer.style.visibility = "hidden";
+//             userInfo();
+//             //endQuiz();
+//         }
+//     }, 1000);
+// }
+
+
 
 // Deduct time as penalty for incorrect answers
 function timePenalty() {
@@ -184,9 +212,25 @@ function attrs(element, attributes) {
 }
 
 // End quiz and display submission form
-function endQuiz() {
-    timer.style.visibility = "hidden";
-    timeRem = 0;
+//function endQuiz() {
+    //stopTimer()
+    //timeRem = 0;
+    // main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore + "! Enter initials below.";
+
+    // // Call attrs function to set attributes for elements
+    // attrs(label, {"for": "userInitials", "margin-top": "10px"});
+    // attrs(input, {"type": "text", "id": "userInitials", "maxlength": "3"});
+    // attrs(submit, {"type": "submit", "value": "Submit"});
+
+    // // Add content to the page
+    // main.appendChild(form)
+    // form.appendChild(label);
+    // form.appendChild(line);
+    // form.appendChild(input);
+    // form.appendChild(submit);
+//}
+
+function userInfo () {
     main.textContent = "> Coding Quiz Program Terminated. You scored " + userScore + "! Enter initials below.";
 
     // Call attrs function to set attributes for elements
@@ -220,12 +264,15 @@ main.addEventListener("click", function(event) {
         getQuestion();
         }
         else {
-            endQuiz();
+            stopTimer();
+            userInfo();
+            timer.style.visibility = "hidden";
         }
     }
     // If user answer is incorrect
     else {
         if (element.matches("button")) {
+            // Zero is the lowest user score possible
             if (userScore > 0) {
                 --userScore;
             }
@@ -237,8 +284,9 @@ main.addEventListener("click", function(event) {
                 getQuestion();
             }
             else {
-
-                endQuiz();
+                stopTimer();
+                userInfo();
+                timer.style.visibility = "hidden";
             }
         }
     }
@@ -262,6 +310,8 @@ function recUsers() {
 // High score submission form listener
 submit.addEventListener("click", function(event) {
     event.preventDefault();
+    stopTimer();
+    timer.style.visibility = "hidden";
     
    var user = {
        user: input.value,
@@ -278,7 +328,12 @@ submit.addEventListener("click", function(event) {
 
 // High Scores Display
 function showHighScores() {
-    timeRem = 0
+    stopTimer();
+    timer.style.visibility = "hidden";
+    startBtn.style.visibility = "hidden";
+    showScores.style.visibility = "hidden";
+    backHome.style.visibility = "visible";
+    main.style.visibility = "visible";
     main.textContent = "HIGH SCORES: ";
     var lastUser = JSON.parse(localStorage.getItem("allUsers"));
     console.log(lastUser);
