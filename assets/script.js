@@ -33,7 +33,7 @@ backHome.style.visibility = "hidden";
 emptyStorage.style.visibility = "hidden";
 var userScore = 0;
 var holdTimer;
-var timeRem = 60;
+var timeRem = 120;
 var questionIndex = 0;
 var correctAnswer = "";
 var allUsers = []
