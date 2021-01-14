@@ -26,7 +26,7 @@ Project is an 8 question quiz.
 
 Highest score: 8 points. Lowest score: 0 points.
 
-Time to complete the quiz is 60 seconds. 
+Time to complete the quiz is 120 seconds. 
 
 Incorrect answers deduct 5 seconds from user's time.
 
