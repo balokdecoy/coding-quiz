@@ -34,7 +34,7 @@ body {
     text-align: right;
     color: lime;
     font-size: small;
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 #timer {
@@ -50,7 +50,7 @@ body {
     text-align: right;
     color: lime;
     font-size: small;
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 #main {
