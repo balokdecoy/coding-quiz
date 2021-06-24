@@ -34,7 +34,10 @@ body {
     text-align: right;
     color: lime;
     font-size: small;
-    cursor: pointer !important;
+}
+
+#viewHighScores:hover {
+    cursor: pointer;
 }
 
 #timer {
@@ -50,7 +53,10 @@ body {
     text-align: right;
     color: lime;
     font-size: small;
-    cursor: pointer !important;
+}
+
+#backHome:hover {
+    cursor: pointer;
 }
 
 #main {
